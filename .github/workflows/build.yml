@@ -1,0 +1,51 @@
+name: build
+
+on:
+    pull_request:
+        branches:
+            - main
+
+    workflow_dispatch:   #permite ejecucion manual        
+            inputs:
+                build_configuration:
+                    description: 'Selecciona la configuración de build'
+                    required: true
+                    default: 'Release'
+                    type: choice
+                    options:
+                        - Debug
+                        - Release
+                log_level:
+                    description: 'Selecciona el nivel de log'
+                    required: true
+                    default: 'Normal'
+                    type: choice
+                    options:
+                        - Quiet
+                        - Minimal
+                        - Normal
+                        - Detailed        
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Mensaje incial
+              run: echo "Iniciando workflow de CI - BUILD"
+
+            - name: Checkout del codigo
+              uses: actions/checkout@v4
+
+            - name: Set up .NET
+              uses: actions/setup-dotnet@v4
+              with:
+                dotnet-version: '10.0.x'
+
+            - name: Verificar version de .NET
+              run: dotnet --version
+
+            - name: Build del proyecto
+              run: dotnet build src/Api/Api.csproj --configuration Release
+
+            - name: Mensaje final
+              run: echo "Finalizando workflow de CI - BUILD" 
