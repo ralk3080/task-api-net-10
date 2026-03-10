@@ -1,0 +1,25 @@
+name: CI - BUILD
+
+on:
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Mensaje incial
+              run: echo "Iniciando workflow de CI - BUILD"
+
+            - name: Checkout del codigo
+              uses: actions/checkout@v4
+
+            - name: Set up .NET
+              uses: actions/setup-dotnet@v4
+              with:
+                dotnet-version: '10.0.x'
+
+            - name: Verificar version de .NET
+              run: dotnet --version
