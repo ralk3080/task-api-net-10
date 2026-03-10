@@ -1,29 +1,7 @@
 name: Build prueba
 on:
-  pull_request:
-    branches:
-      - main
- 
-  workflow_dispatch:    # Permite ejecución manual
-    inputs:
-      build_configuration:
-        description: 'Build Configuration (Debug or Release)'
-        required: false
-        default: 'Release'
-        type: choice
-        options:
-          - Debug
-          - Release
-      log_level:
-        description: 'dotnet verbosity level'
-        required: false
-        default: 'normal'
-        type: choice
-        options:
-          - quiet
-          - minimal
-          - normal
-          - detailed
+  fork
+  
 env: 
   DOTNET_VERSION: '10.0.x'
   BUILD_CONFIGURATION: 'Release'
