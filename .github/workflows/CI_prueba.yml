@@ -27,11 +27,12 @@ jobs:
             - name: Build del proyecto
               id: build-step 
               run: dotnet build src/Api/Api.csproj --configuration Release
-
+              continue-on-error: true
+            
             - name: Notifica on build failure
               if: steps.build-step.outcome == 'failure'
               run: echo "El build fallo 🤣"
-              continue-on-error: true
+              
 
             - name: Mensaje final
               run: echo "Finalizando workflow de CI - BUILD" 
