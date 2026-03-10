@@ -4,7 +4,7 @@
 
 Proyecto de demostración para el curso **Github Actions**
 
-## Tecnologías
+## Tecnologías de la información
 
 - .NET 10 Web API
 - C# 13
