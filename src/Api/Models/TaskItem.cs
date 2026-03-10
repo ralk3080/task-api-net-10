@@ -30,6 +30,7 @@ public class TaskItem
 /// <summary>Niveles de prioridad de una tarea.</summary>
 public enum Priority
 {
+    //Correccion
     Low = 0,
     Medium = 1,
     High = 2
